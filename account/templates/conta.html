@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<section class="generic-banner relative mt-80">
+  <div class="container">
+    <div class="row height align-items-center justify-content-center" style="width=100% !important">
+      <div class="col-lg-12">
+        <div class="generic-banner-content">
+          <h2 class="text-white">Galeria Peter Parker & Mary Jane</h2>
+          <h2 class="text-white">Dados do usuário</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="whole-wrap">
+  <div class="container">
+    <div class="section-top-border">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="typography">
+            <div class="mt-15">
+              <h1>Usuário: {{user}}</h1>
+            </div>
+            <div class="mt-15">
+              <h1>Nome: {{user.first_name}}</h1>
+            </div>
+            <div class="mt-15">
+              <h1>Sobrenome: {{user.last_name}}</h1>
+            </div>
+            <div class="mt-15">
+            <h1>E-mail: {{user.email}}</h1>
+            </div>
+            <div class="mt-15">
+            <a type="submit"class="genric-btn primary e-large" href="{%url 'account:edit_account'%}">Alterar Dados</a>
+            &nbsp; &nbsp; &nbsp;
+            <a type="submit"class="genric-btn primary e-large" href="{%url 'account:edit_password'%}">Alterar Senha</a>
+            <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

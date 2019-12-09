@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<!-- start banner Area -->
+<section class="generic-banner relative mt-80">
+  <div class="container">
+    <div class="row height align-items-center justify-content-center">
+      <div class="col-lg-12">
+        <div class="generic-banner-content">
+          <h2 class="text-white">Galeria Peter Parker & Mary Jane</h2>
+          <h2 class="text-white">Editar Conta</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End banner Area -->
+  <!-- Start gallery Area -->
+  <section id="form-entrar"> <div class="section-top-border">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 col-md-8">
+          <form action="." method="post">
+            {% csrf_token %}
+            {% if success%}
+              <p>Os dados foram alterados com sucesso</p>
+            {% endif %}
+            {% for field in form %}
+
+            <div class="mt-25 form-control">
+              <label class="col-md-4 control-label">{{ field.label_tag }}</label>
+              {{ field }}
+            </div>
+            {{ field.errors }}
+            {% endfor %}
+
+            <div class="mt-15">
+              <label for="{{ form.username.auto_id }}" class="col-md-3 control-label">{{ form.username.label }}</label>
+              {% render_field form.username class='form-control' %}
+            </div>
+            <div class="mt-15">
+               <label for="{{ form.password.auto_id }}" class="col-md-3 control-label">{{ form.password.label }}</label>
+                {% render_field form.password class='form-control' %}
+            </div>
+            <div class="mt-15">
+              <center>
+                <button type="submit"class="genric-btn success e-large">Salvar dados</button>
+              </center>
+            </div>
+
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

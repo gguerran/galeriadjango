@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<!-- start banner Area -->
+<!-- Start banner Area -->
+{%if user.is_superuser%}
+<section class="generic-banner relative mt-80">
+  <div class="container">
+    <div class="row height align-items-center justify-content-center" style="width=100% !important">
+      <div class="col-lg-12">
+        <div class="generic-banner-content">
+          <h2 class="text-white">Galeria Peter Parker & Mary Jane</h2>
+          <h2 class="text-white">Fotos</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End banner Area -->
+<section>
+  <div class="container">
+<div class="section-top-border">
+  <div class="row gallery-item">
+    {%for photo in object_list %}
+    {%if photo.aproved is not True%}
+    <div class="col-md-4">
+      <img class="img-fluid" src="{{ photo.image.url }}" alt="{{ photo.title }}" />
+      <br><br>Enviada há {{photo.created|timesince}}<br>
+      <a href="{% url 'photos:approve_photo' pk=photo.pk %}" class="genric-btn primary circle"> Autorizar</a>
+      <a href="{% url 'photos:remove_photo' pk=photo.pk %}" class="genric-btn danger circle" style="float: right;"> Recusar</a>
+    </div>
+    {%endif%}
+    {% endfor %}
+  </div>
+</div>
+</div>
+</section>
+{%endif%}
+{% endblock %}

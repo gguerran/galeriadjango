@@ -1,0 +1,32 @@
+"""simplemooc URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/2.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView
+from account import views
+app_name = 'account'
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('conta/', views.conta, name='conta'),
+    path('edit_account/', views.edit_account, name='edit_account'),
+    path('edit_password/', views.edit_password, name='edit_password'),
+    path('login/', LoginView.as_view(template_name='login.html'),
+         name='login'),
+    path('sair/', LogoutView.as_view(), name='logout'),
+    path('register/', views.register, name='register'),
+    path('pass_recovery/', views.pass_recovery, name='pass_recovery'),
+
+]
