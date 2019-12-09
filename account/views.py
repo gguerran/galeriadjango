@@ -81,16 +81,16 @@ def pass_recovery(request):
     if request.method == 'POST':
         form = PassForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            user = get_object_or_404(User, username=username)
             email = form.cleaned_data['email']
+            user = get_object_or_404(User, email=email)
+
             if email == user.email:
                 subject = 'Recuperação de senha - Galeria Peter & Marry'
                 password = senha()
                 user.set_password(password)
                 user.save()
                 email_from = email
-                message = "Olá "+username+"\nSua nova senha é: "+password
+                message = "Olá\nSua nova senha é: "+password
                 recipient_list = [email]
                 send_mail(subject, message, email_from, recipient_list)
                 msg = 'E-mail enviado'

@@ -23,7 +23,6 @@ class RegisterForm(UserCreationForm):
 
 class PassForm(forms.Form):
     email = forms.CharField(required=True)
-    username = forms.CharField(required=True)
 
 
 class EditAccountForm(forms.ModelForm):
