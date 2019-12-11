@@ -1,7 +1,4 @@
 from django.db import models
-from django.conf import settings
-from taggit.managers import TaggableManager
-from django.contrib.auth.models import User
 
 
 class Photos(models.Model):
